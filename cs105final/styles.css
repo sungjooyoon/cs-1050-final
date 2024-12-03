@@ -1,0 +1,59 @@
+/* font */
+@import url('https://fonts.googleapis.com/css2?family=Faculty+Glyphic&display=swap');
+
+/* style */
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #F0EAD6; 
+  margin: 20px;
+  color: #333;
+}
+
+h1 {
+  font-size: 24px; 
+  text-align: center;
+  color: #8B7765; 
+  font-weight: 700; 
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 2px #D2B48C; 
+}
+
+#score, #trackers, #scamAlert {
+  font-size: 16px;
+  margin: 10px 0;
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#score {
+  background-color: #D2B48C; 
+  color: #5C4033; 
+}
+
+#trackers {
+  background-color: #C3B091; 
+  color: #4A3C31;
+}
+
+#scamAlert {
+  background-color: #E6C3A6; 
+  color: #8B4513; 
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #A0522D; 
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+button:hover {
+  background-color: #8B4513; 
+}
