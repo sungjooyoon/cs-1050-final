@@ -18,8 +18,8 @@ knitr::include_graphics("images/1.png")
 ```
 
 <div class="figure">
-<img src="images/1.png" alt="plot of chunk unnamed-chunk-13" width="2344" />
-<p class="caption">plot of chunk unnamed-chunk-13</p>
+<img src="images/1.png" alt="plot of chunk unnamed-chunk-2" width="2344" />
+<p class="caption">plot of chunk unnamed-chunk-2</p>
 </div>
 
 The WALDO Privacymeter (v1.050) is a proof-of-concept browser extension that aims to protect citizens’ data privacy and protect them from online fraud schemes. The acronym WALDO, or Website Analysis of Language and Domain-Related Operations, aptly describes the nature of the project. Critically, the Privacymeter aggregates key metrics related to data privacy and fraud risk for any given website—by analyzing its web architecture, language content, and domain characteristics. In turn, the extension informs the user of the website’s ‘safety score’ (a composite rating based on said key metrics) and recommends which level of caution they ought to exercise when disclosing sensitive information, alongside other qualitative features that can either reassure users of a site’s safety or warn them of potential risks. The Privacymeter is unique in its aims, as no other published extension focuses on both local and domain-level factors in producing recommendations to users. In short—by offering real-time insights about online data privacy, it empowers users to construct stronger threat models against bad-faith actors.
@@ -34,8 +34,8 @@ knitr::include_graphics("images/2.png")
 ```
 
 <div class="figure">
-<img src="images/2.png" alt="plot of chunk unnamed-chunk-14" width="2341" />
-<p class="caption">plot of chunk unnamed-chunk-14</p>
+<img src="images/2.png" alt="plot of chunk unnamed-chunk-3" width="2341" />
+<p class="caption">plot of chunk unnamed-chunk-3</p>
 </div>
 The empirics on the aforementioned threats confirm the need for a stronger defensive toolkit in this realm. Last year, one in three Americans were affected by cyber fraud, and 349 million people globally were affected by data breaches alone [1], [2]. Relatedly, consumer fraud within the United States topped out over $10 billion, with the Federal Trade Commission noting that digital tools were a primary means for carrying out these scams [3]. Subjectively and similarly, 92% of Americans report being concerned about their privacy, but only 20% routinely report taking steps to protect themselves [4]. 85% of digital citizens globally share the concern for their privacy, while 81% of iOS users even report feeling that the costs of disclosing information digitally to corporations outweighs the benefits [5], [6].
 
@@ -61,8 +61,8 @@ knitr::include_graphics("images/3.png")
 ```
 
 <div class="figure">
-<img src="images/3.png" alt="plot of chunk unnamed-chunk-15" width="1024" />
-<p class="caption">plot of chunk unnamed-chunk-15</p>
+<img src="images/3.png" alt="plot of chunk unnamed-chunk-4" width="1024" />
+<p class="caption">plot of chunk unnamed-chunk-4</p>
 </div>
 The technical details of the Privacymeter are intended to be fairly straightforward and digestible, as to promote transparency for users. Built on the Manifest file format, it is employable on most modern browsers (e.g. Google Chrome, Microsoft Edge, Mozilla Firefox, etc.) [7]. Specifically, it begins by employing a Manifest file, or a configuration file that orchestrates the flow of interaction between the extension’s components. From there, a central content file that holds the functions for aggregating relevant information is utilized. This content file interacts with the background file, whose scripts analyze the website’s dynamic structural elements in real-time. Once the relevant information has been collected, it is populated to the user through the popup files (popup.html and popup.js), which respectively display the layout and behavior of the user interface. For further information on the code itself, please refer to the public repository [8].
 
@@ -82,8 +82,8 @@ knitr::include_graphics("images/4.png")
 ```
 
 <div class="figure">
-<img src="images/4.png" alt="plot of chunk unnamed-chunk-16" width="2603" />
-<p class="caption">plot of chunk unnamed-chunk-16</p>
+<img src="images/4.png" alt="plot of chunk unnamed-chunk-5" width="2603" />
+<p class="caption">plot of chunk unnamed-chunk-5</p>
 </div>
 Taking the nine aforementioned website characteristics, the Privacymeter subsequently weights these factors to produce a threat assessment (in the form of a privacy score). In the realm of web architecture, a secure protocol and modern encryption methods are coded positively and weighted equally (i.e. each adding ten points to the composite score). An absence of excessive popups is weighted positively at a factor half that of the prior two characteristics, as this function is significantly less accurate in the current deployment. Tracker count is not included as a factor of the score, but is displayed independently as an informative metric. In regards to language content, an absence of accepting payment information is coded positively and weighted equally to the aforementioned factors as well, while proper grammar is weighted at a half-factor (also due to being functionally less accurate in the current build). However, if a payment method with buyer protection is present, the scoring is increased at a rate half that of an absence of accepting payment information. And with respect to domain analysis—domestic registration, a non-blacklisted domain, and the absence of an unstable registrar are coded positively and weighted equally. The age of the domain, however, is weighted proportional to its longevity [10]. If the domain is older than six months, the age is coded positively and weighted equally to all of the other previously-discussed factors. If the domain is older than five years, the age remains coded positively, but weighted at a factor of two compared to the prior check; if the domain is older than five or ten years, it is weighed at a factor of three and four respectively.
 
@@ -94,8 +94,8 @@ knitr::include_graphics("images/5.png")
 ```
 
 <div class="figure">
-<img src="images/5.png" alt="plot of chunk unnamed-chunk-17" width="2411" />
-<p class="caption">plot of chunk unnamed-chunk-17</p>
+<img src="images/5.png" alt="plot of chunk unnamed-chunk-6" width="2411" />
+<p class="caption">plot of chunk unnamed-chunk-6</p>
 </div>
 The visual above represents how the Privacymeter’s scoring system scores various websites, ranging from ‘google.com’ to ‘utrustbiz.ru’ and websites implicated in the Doppelgangers website scandal [11]. Notably, based on the score calculated, the Privacymeter displays a different qualitative assessment (alongside said score). If the score is greater than 80, the extension will inform the user that “[this] site appears safe”. If the score is greater than or equal to 50, but less than or equal to 80, the extension will read “Beware: this website may be risky!”. And if the score is below 50, the extension reads “Warning: scam likely!”. Simultaneously, it displays which positively-coded criteria were satisfied, adjacent to the counter for trackers. While the Privacymeter is certainly imperfect in its current state, these results reflect the promising potential for enhancing user safety through its automated threat assessments.
 
@@ -1556,134 +1556,6 @@ chrome.runtime.onMessage.addListener(function(message) {
   checkForScam(message.privacyScore);
 });
 </script>
-
-styles.css
-
-```css
-/* font */
-@import url('https://fonts.googleapis.com/css2?family=Faculty+Glyphic&display=swap');
-
-/* style */
-body {
-  font-family: 'Open Sans', sans-serif;
-  background-color: #F0EAD6; 
-  margin: 20px;
-  color: #333;
-}
-
-h1 {
-  font-size: 24px; 
-  text-align: center;
-  color: #8B7765; 
-  font-weight: 700; 
-  margin-bottom: 20px;
-  text-shadow: 1px 1px 2px #D2B48C; 
-}
-
-#score, #trackers, #scamAlert {
-  font-size: 16px;
-  margin: 10px 0;
-  text-align: center;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-#score {
-  background-color: #D2B48C; 
-  color: #5C4033; 
-}
-
-#trackers {
-  background-color: #C3B091; 
-  color: #4A3C31;
-}
-
-#scamAlert {
-  background-color: #E6C3A6; 
-  color: #8B4513; 
-}
-
-button {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  background-color: #A0522D; 
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 20px;
-}
-
-button:hover {
-  background-color: #8B4513; 
-}
-```
-
-
-<style type="text/css">
-/* font */
-@import url('https://fonts.googleapis.com/css2?family=Faculty+Glyphic&display=swap');
-
-/* style */
-body {
-  font-family: 'Open Sans', sans-serif;
-  background-color: #F0EAD6; 
-  margin: 20px;
-  color: #333;
-}
-
-h1 {
-  font-size: 24px; 
-  text-align: center;
-  color: #8B7765; 
-  font-weight: 700; 
-  margin-bottom: 20px;
-  text-shadow: 1px 1px 2px #D2B48C; 
-}
-
-#score, #trackers, #scamAlert {
-  font-size: 16px;
-  margin: 10px 0;
-  text-align: center;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-#score {
-  background-color: #D2B48C; 
-  color: #5C4033; 
-}
-
-#trackers {
-  background-color: #C3B091; 
-  color: #4A3C31;
-}
-
-#scamAlert {
-  background-color: #E6C3A6; 
-  color: #8B4513; 
-}
-
-button {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  background-color: #A0522D; 
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 20px;
-}
-
-button:hover {
-  background-color: #8B4513; 
-}
-</style>
-
 
 # Works cited
 
